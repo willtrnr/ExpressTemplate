@@ -7,10 +7,10 @@ module.exports = function (app, db, config, passport) {
 
   app.get(prefix + '/auth/logout', function(req, res) {
     req.logout();
-    res.redirect(prefix + '/login');
+    res.redirect(prefix + '/auth/login');
   });
 
-  app.get(prefix + '/auth/local', passport.authenticate('local', {
+  app.post(prefix + '/auth/local', passport.authenticate('local', {
     successRedirect: prefix + '/',
     failureRedirect: prefix + '/auth/login',
     failureFlash: true

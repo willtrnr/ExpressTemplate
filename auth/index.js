@@ -6,7 +6,7 @@ module.exports = function (passport, db, config) {
   });
 
   passport.deserializeUser(function (id, done) {
-    db.user.getById(id, function (err, user) {
+    db.user.findById(id, function (err, user) {
       done(err, user);
     });
   });
