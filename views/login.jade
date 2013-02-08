@@ -2,8 +2,7 @@ extends layout
 
 block content
   .row
-    .span3
-    .span6
+    .span6.offset3
       form.form-horizontal(method='post', action='#{prefix}/auth/local')
         fieldset
           legend #{__('Login')}
@@ -27,4 +26,3 @@ block content
             button.btn.btn-primary(type='submit')
               i.icon-signin
               |  #{__('Login')}
-    .span3
