@@ -1,4 +1,4 @@
 ExpressTemplate
 ===============
 
-My ExpressJS project template.
+My Express project template.
