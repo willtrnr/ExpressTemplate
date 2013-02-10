@@ -14,8 +14,7 @@ var sessions = new express.session.MemoryStore(); // Must change for cluster-saf
 require('./auth')(passport, db, config);
 
 i18n.configure({
-  locales: ['en', 'fr'],
-  register: global
+  locales: ['en', 'fr']
 });
 
 app.configure(function () {
@@ -40,13 +39,22 @@ app.configure(function () {
   app.use(express.session({ store: sessions, secret: config.secret, key: 'express.sid' }));
   // i18n
   app.use(i18n.init);
+  app.use(function (req, res, next) {
+    res.locals.__ = function () {
+      return i18n.__.apply(req, arguments);
+    };
+    res.locals.__n = function () {
+      return i18n.__n.apply(req, arguments);
+    };
+    next();
+  });
   // Flash messages
   app.use(flash());
   // Authentication
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(function (req, res, next) {
-    app.locals({ user: req.user });
+    res.locals.user = req.user;
     next();
   });
   // Route serving

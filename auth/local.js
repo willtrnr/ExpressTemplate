@@ -6,8 +6,8 @@ module.exports = function (passport, db, config) {
       password = db.user.hashPassword(password);
       db.user.findByUsername(username, function (err, user) {
         if (!err && user && user.password === password) done(err, user);
-        else done(err, null, { loginerror: __('Wrong username and/or password!') });
+        else done(err, null, { loginerror: 'Wrong username and/or password!' });
       });
-    } else done(null, null, { loginerror: __('The username and password are required!') });
+    } else done(null, null, { loginerror: 'The username and password are required!' });
   }));
 };
