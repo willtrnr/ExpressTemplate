@@ -14,7 +14,8 @@ var sessions = new express.session.MemoryStore(); // Must change for cluster-saf
 require('./auth')(passport, db, config);
 
 i18n.configure({
-  locales: ['en', 'fr']
+  locales: ['en', 'fr'],
+  extension: '.json'
 });
 
 app.configure(function () {

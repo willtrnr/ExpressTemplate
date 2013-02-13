@@ -6,8 +6,9 @@ block content
       form.form-horizontal(method='post', action='#{prefix}/auth/local')
         fieldset
           legend #{__('Login')}
-          if error != ''
-            .alert.alert-error #{__(error)}
+          if error && error != ''
+            .alert.alert-error #{__('error.message || error')}
+
           .control-group
             label.control-label(for='username') #{__('Username')}
             .controls
@@ -15,6 +16,7 @@ block content
                 input#username(type='text', name='username')
                 span.add-on
                   i.icon-user
+
           .control-group
             label.control-label(for='password') #{__('Password')}
             .controls
@@ -22,6 +24,7 @@ block content
                 input#password(type='password', name='password')
                 span.add-on
                   i.icon-lock
+
           .form-actions
             button.btn.btn-primary(type='submit')
               i.icon-signin

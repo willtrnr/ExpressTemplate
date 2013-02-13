@@ -2,7 +2,7 @@ module.exports = function (app, db, config, passport) {
   var prefix = config.prefix || '';
 
   app.get(prefix + '/auth/login', function(req, res) {
-    res.render('login', { error: req.flash('loginerror') });
+    res.render('login', { error: req.flash('error') });
   });
 
   app.get(prefix + '/auth/logout', function(req, res) {
