@@ -7,7 +7,7 @@ block content
         fieldset
           legend #{__('Login')}
           if error && error != ''
-            .alert.alert-error #{__('error.message || error')}
+            .alert.alert-error #{__(error.message || error[0] || error)}
 
           .control-group
             label.control-label(for='username') #{__('Username')}
