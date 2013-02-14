@@ -41,6 +41,7 @@ app.configure(function () {
   // i18n
   app.use(i18n.init);
   app.use(function (req, res, next) {
+    i18n.setLocale(req, 'fr');
     res.locals.__ = function () {
       return i18n.__.apply(req, arguments);
     };
@@ -51,6 +52,11 @@ app.configure(function () {
   });
   // Flash messages
   app.use(flash());
+  app.use(function (req, res, next) {
+    res.locals.success = req.flash('success')[0] || null;
+    res.locals.error = req.flash('error')[0] || null;
+    next();
+  });
   // Authentication
   app.use(passport.initialize());
   app.use(passport.session());

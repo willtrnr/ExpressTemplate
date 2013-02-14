@@ -1,13 +1,13 @@
 extends layout
 
 block content
-  .row
-    .span6.offset3
+  .row-fluid
+    .span6(style='margin: 0 auto; float: none;')
       form.form-horizontal(method='post', action='#{prefix}/auth/local')
         fieldset
           legend #{__('Login')}
           if error && error != ''
-            .alert.alert-error #{__(error.message || error[0] || error)}
+            .alert.alert-error #{__(error.message || error)}
 
           .control-group
             label.control-label(for='username') #{__('Username')}
