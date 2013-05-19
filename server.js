@@ -41,7 +41,8 @@ app.configure(function () {
   // i18n
   app.use(i18n.init);
   app.use(function (req, res, next) {
-    i18n.setLocale(req, 'fr');
+    // Force lacale to 'en'
+    //i18n.setLocale(req, 'en');
     res.locals.__ = function () {
       return i18n.__.apply(req, arguments);
     };
